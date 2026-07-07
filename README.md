@@ -178,3 +178,13 @@ python -m etl.transform
 [MovieLens ml-latest-small](https://grouplens.org/datasets/movielens/) —
 100,836 ratings of 9,742 movies by 610 users (1996–2018). Free for academic
 use; downloaded automatically by `scripts/download_data.py`.
+
+---
+
+## License
+
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
+
+---
+
+*© 2026 Damjan Zimbakov - FINKI Data Warehouses Course*
