@@ -1,5 +1,11 @@
 # MovieLens Analytics Warehouse
 
+[![Python](https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white)](https://python.org)
+[![Apache Spark](https://img.shields.io/badge/Apache%20Spark-E25A1C?style=flat-square&logo=apachespark&logoColor=white)](https://spark.apache.org)
+[![PostgreSQL](https://img.shields.io/badge/PostgreSQL-4169E1?style=flat-square&logo=postgresql&logoColor=white)](https://postgresql.org)
+[![Docker](https://img.shields.io/badge/Docker-2496ED?style=flat-square&logo=docker&logoColor=white)](https://docker.com)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow?style=flat-square)](LICENSE)
+
 Final project for the *Data Warehouses and Analytics* course. An end-to-end ETL
 pipeline that ingests the MovieLens `ml-latest-small` dataset with **PySpark**,
 shapes it into a **star schema**, loads it into **PostgreSQL** over JDBC, and
@@ -154,6 +160,18 @@ python -m etl.transform
 | 4 | Rating distribution (half-star histogram, colored by bucket) | `output/04_rating_distribution.png` |
 | 5 | Most active users and their average rating | – |
 | 6 | Genre popularity by decade (top 3 per decade) | `output/06_genre_popularity_by_decade.png` |
+
+### Sample charts
+
+Committed copies of a few generated charts (the full set is regenerated into
+`output/` by `analytics/run_queries.py`):
+
+<p align="center">
+  <img src="docs/03_rating_volume_by_year.png" width="30%" alt="Rating volume by year">
+  <img src="docs/04_rating_distribution.png" width="30%" alt="Rating distribution">
+  <img src="docs/06_genre_popularity_by_decade.png" width="30%" alt="Genre popularity by decade">
+</p>
+
 
 ## Project structure
 
