@@ -1,0 +1,20 @@
+services:
+  postgres:
+    image: postgres:16
+    container_name: movielens_dw_postgres
+    environment:
+      POSTGRES_DB: movielens_dw
+      POSTGRES_USER: dw_user
+      POSTGRES_PASSWORD: dw_pass
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U dw_user -d movielens_dw"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+volumes:
+  pgdata:

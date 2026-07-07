@@ -1,0 +1,5 @@
+pyspark==4.0.1
+psycopg2-binary==2.9.10
+matplotlib==3.10.3
+python-dotenv==1.1.0
+requests==2.32.4

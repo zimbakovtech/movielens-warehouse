@@ -1,0 +1,22 @@
+# data & outputs
+data/
+output/
+
+# python
+__pycache__/
+*.pyc
+venv/
+.venv/
+
+# secrets
+.env
+
+# spark cruft
+spark-warehouse/
+metastore_db/
+derby.log
+
+# os / ide
+.DS_Store
+.idea/
+.vscode/
