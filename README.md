@@ -148,7 +148,7 @@ python -m etl.transform
 
 | # | Query | Chart |
 |---|-------|-------|
-| 1 | Top 10 highest-rated movies per decade (≥ 50 ratings) | – |
+| 1 | Top 10 highest-rated movies per decade (≥ 50 ratings) | `output/01_top_movies_per_decade.png` |
 | 2 | Average rating per genre, ranked | `output/02_avg_rating_per_genre.png` |
 | 3 | Rating volume trend by year | `output/03_rating_volume_by_year.png` |
 | 4 | Rating distribution (half-star histogram, colored by bucket) | `output/04_rating_distribution.png` |

@@ -37,6 +37,32 @@ def print_table(columns, rows) -> None:
 
 # --- charts -----------------------------------------------------------------
 
+def chart_top_movies_per_decade(rows, out_path: Path) -> None:
+    # rows: (decade, rank_in_decade, title, release_year, avg_rating, num_ratings)
+    decades = sorted({r[0] for r in rows})
+    ncols = 3
+    nrows = -(-len(decades) // ncols)  # ceiling division
+    fig, axes = plt.subplots(nrows, ncols, figsize=(15, 3.4 * nrows), squeeze=False)
+    flat = [ax for axis_row in axes for ax in axis_row]
+    for ax, decade in zip(flat, decades):
+        top = [r for r in rows if r[0] == decade][:10]  # RANK ties can give 11 rows
+        titles = [r[2] if len(r[2]) <= 32 else r[2][:29] + "..." for r in top][::-1]
+        avgs = [float(r[4]) for r in top][::-1]
+        ax.barh(titles, avgs, color="steelblue")
+        ax.set_xlim(0, 5)
+        ax.set_title(f"{decade}s", fontsize=11, fontweight="bold")
+        ax.tick_params(axis="y", labelsize=7)
+        ax.tick_params(axis="x", labelsize=8)
+        for i, avg in enumerate(avgs):
+            ax.text(avg + 0.05, i, f"{avg:.2f}", va="center", fontsize=7)
+    for ax in flat[len(decades):]:
+        ax.set_visible(False)
+    fig.suptitle("Top 10 highest-rated movies per decade (min 50 ratings)", fontsize=14)
+    fig.tight_layout(rect=(0, 0, 1, 0.97))
+    fig.savefig(out_path, dpi=150)
+    plt.close(fig)
+
+
 def chart_avg_rating_per_genre(rows, out_path: Path) -> None:
     genres = [r[0] for r in rows][::-1]  # reversed so the best genre is on top
     avgs = [float(r[1]) for r in rows][::-1]
@@ -109,6 +135,7 @@ def chart_genre_popularity_by_decade(rows, out_path: Path) -> None:
 
 # maps query file stem -> chart function
 CHARTS = {
+    "01_top_movies_per_decade": chart_top_movies_per_decade,
     "02_avg_rating_per_genre": chart_avg_rating_per_genre,
     "03_rating_volume_by_year": chart_rating_volume_by_year,
     "04_rating_distribution": chart_rating_distribution,
